@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const api = {
-  key: "e9c23a5ff82c35e0b6de95d3f59c2de4",
+  key: process.env.API_KEY,
   base: "https://api.openweathermap.org/data/2.5/",
 };
 function App() {
@@ -19,7 +19,8 @@ function App() {
         .catch((error) => alert(error));
     }
   };
-
+  require("dotenv").config();
+  console.log(process.env);
   const dateBuilder = (d) => {
     let months = [
       "January",
@@ -89,7 +90,6 @@ function App() {
         ) : (
           ""
         )}
-        ;
       </main>
     </div>
   );
