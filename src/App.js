@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 
 const api = {
-  key: process.env.API_KEY,
   base: "https://api.openweathermap.org/data/2.5/",
 };
+
 function App() {
   const [query, setQuery] = useState("");
   const [weather, setWeather] = useState({});
+  const key = process.env.REACT_APP_API_KEY;
   const search = (evt) => {
     if (evt.key === "Enter") {
-      fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+      fetch(`${api.base}weather?q=${query}&units=metric&APPID=${key}`)
         .then((res) => res.json())
         .then((result) => {
           setWeather(result);
@@ -20,7 +21,6 @@ function App() {
     }
   };
   require("dotenv").config();
-  console.log(process.env);
   const dateBuilder = (d) => {
     let months = [
       "January",
