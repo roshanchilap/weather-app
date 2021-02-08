@@ -5,7 +5,7 @@ const api = {
 };
 
 function App() {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("Mumbai");
   const [weather, setWeather] = useState({});
   const key = process.env.REACT_APP_API_KEY;
   const search = (evt) => {
@@ -68,7 +68,7 @@ function App() {
           <input
             type="text"
             className="search-bar"
-            placeholder="Search..."
+            placeholder="Weather in your city..."
             onChange={(e) => setQuery(e.target.value)}
             value={query}
             onKeyPress={search}
