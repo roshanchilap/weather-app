@@ -61,10 +61,10 @@ function App() {
     <div
       className={
         typeof weather.main != "undefined"
-          ? weather.main.temp > 16
-            ? "app warm"
-            : "app"
-          : "app"
+          ? weather.main.temp < 16
+            ? "app"
+            : "app warm"
+          : "app warm"
       }
     >
       <main>
@@ -77,6 +77,9 @@ function App() {
             value={query}
             onKeyPress={search}
           ></input>
+          {/* <button className="searchButton" type="submit">
+            Search
+          </button> */}
         </div>
         {typeof weather.main != "undefined" ? (
           <div>

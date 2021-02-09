@@ -53,7 +53,26 @@ main {
 
   transition: 0.4s ease;
 }
+.searchButton {
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 15px;
+  position: relative;
+  left: 232px;
+  bottom: 14px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 16px 16px 16px 16px;
+  margin-top: -25px;
 
+  box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
+
+  color: #313131;
+  font-size: 20px;
+
+  transition: 0.4s ease;
+}
 .search-box .search-bar:focus {
   background-color: rgba(255, 255, 255, 0.75);
 }
