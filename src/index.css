@@ -33,7 +33,7 @@ main {
 }
 .search-box .search-bar {
   display: block;
-  width: 100%;
+  width: 78%;
   padding: 15px;
   position: relative;
   top: 20px;
@@ -53,6 +53,12 @@ main {
 
   transition: 0.4s ease;
 }
+.search-form {
+  min-height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .searchButton {
   appearance: none;
   background: none;
@@ -60,14 +66,11 @@ main {
   outline: none;
   padding: 15px;
   position: relative;
-  left: 232px;
-  bottom: 14px;
+  top: 8px;
+  right: 93px;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 16px 16px 16px 16px;
-  margin-top: -25px;
-
   box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
-
   color: #313131;
   font-size: 20px;
 

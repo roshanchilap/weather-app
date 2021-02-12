@@ -5,25 +5,34 @@ const api = {
 };
 
 function App() {
+  const [weather, setWeather] = useState([]);
+  const [search, setSearch] = useState("");
   const [query, setQuery] = useState("Mumbai");
-  const [weather, setWeather] = useState({});
+
   const key = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
-    search();
-  }, []);
+    searchResult();
+  }, [query]);
 
-  const search = async () => {
-    await fetch(`${api.base}weather?q=${query}&units=metric&APPID=${key}`)
-      .then((res) => res.json())
-      .then((result) => {
-        setWeather(result);
-        setQuery("");
-        console.log(result);
-      })
-      .catch((error) => alert(error));
+  const getSearch = (e) => {
+    e.preventDefault();
+    setQuery(search);
+    setSearch("");
   };
 
+  const updateSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const searchResult = async () => {
+    const res = await fetch(
+      `${api.base}weather?q=${query}&units=metric&APPID=${key}`
+    );
+    const data = await res.json();
+    setWeather(data);
+    console.log(data);
+  };
   require("dotenv").config();
   const dateBuilder = (d) => {
     let months = [
@@ -61,25 +70,26 @@ function App() {
     <div
       className={
         typeof weather.main != "undefined"
-          ? weather.main.temp < 16
-            ? "app"
-            : "app warm"
-          : "app warm"
+          ? weather.main.temp > 16
+            ? "app warm"
+            : "app"
+          : "app"
       }
     >
       <main>
         <div className="search-box">
-          <input
-            type="text"
-            className="search-bar"
-            placeholder="Weather in your city..."
-            onChange={(e) => setQuery(e.target.value)}
-            value={query}
-            onKeyPress={search}
-          ></input>
-          {/* <button className="searchButton" type="submit">
-            Search
-          </button> */}
+          <form onSubmit={getSearch} className="search-form">
+            <input
+              type="text"
+              className="search-bar"
+              placeholder="Weather in your city..."
+              value={search}
+              onChange={updateSearch}
+            ></input>
+            <button className="searchButton" type="submit">
+              Search
+            </button>
+          </form>
         </div>
         {typeof weather.main != "undefined" ? (
           <div>
